@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils.html import format_html
 from imagekit.models import ImageSpecField
 from imagekit.processors import ResizeToFill, ResizeToFit
 
@@ -40,3 +41,13 @@ class Artwork(models.Model):
 
     class Meta:
         ordering = ['artist_last_name',]
+
+class Page(models.Model):
+    title = models.CharField(max_length=255,unique=True)
+    body = models.TextField()
+
+    def body_as_html(self):
+        return format_html(self.body)
+
+    def __unicode__(self):
+        return self.title
