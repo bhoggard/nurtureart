@@ -13,6 +13,13 @@ class Artwork(models.Model):
     size = models.CharField(max_length=255)
     medium = models.TextField()
     edition = models.CharField(max_length=255,blank=True,help_text="leave blank if not editioned")
+    image = models.ImageField(upload_to='images',null=True)
+
+    def image_tag(self):
+        return u'<img src="%s" />' % self.image.url
+
+    image_tag.short_description = 'Image'
+    image_tag.allow_tags = True
 
     def __unicode__(self):
         return self.title
