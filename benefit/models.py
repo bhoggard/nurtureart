@@ -1,6 +1,6 @@
 from django.db import models
-
-# Create your models here.
+from imagekit.models import ImageSpecField
+from imagekit.processors import ResizeToFill, ResizeToFit
 
 class Artwork(models.Model):
     title = models.CharField(max_length=255,db_index=True)
@@ -14,12 +14,26 @@ class Artwork(models.Model):
     medium = models.TextField()
     edition = models.CharField(max_length=255,blank=True,help_text="leave blank if not editioned")
     image = models.ImageField(upload_to='images',null=True)
+    image_large = ImageSpecField(source='image',
+                                     processors=[ResizeToFit(800, 800, False)],
+                                     format='JPEG',
+                                     options={'quality': 100})
+    image_thumbnail = ImageSpecField(source='image',
+                                     processors=[ResizeToFill(140, 140)],
+                                     format='JPEG',
+                                     options={'quality': 60})
 
     def image_tag(self):
-        return u'<img src="%s" />' % self.image.url
+        return u'<img src="%s" />' % self.image_large.url
 
     image_tag.short_description = 'Image'
     image_tag.allow_tags = True
+
+    def thumbnail_tag(self):
+        return u'<img src="%s" />' % self.image_thumbnail.url
+
+    thumbnail_tag.short_description = 'Thumbnail'
+    thumbnail_tag.allow_tags = True
 
     def __unicode__(self):
         return self.title
