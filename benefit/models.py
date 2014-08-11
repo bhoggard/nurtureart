@@ -24,6 +24,11 @@ class Artwork(models.Model):
                                      format='JPEG',
                                      options={'quality': 60})
 
+    image_tiny = ImageSpecField(source='image',
+                                processors=[ResizeToFill(80, 80)],
+                                format='JPEG',
+                                options={'quality': 60})
+
     def image_tag(self):
         return u'<img src="%s" />' % self.image_large.url
 
@@ -35,6 +40,12 @@ class Artwork(models.Model):
 
     thumbnail_tag.short_description = 'Thumbnail'
     thumbnail_tag.allow_tags = True
+
+    def tiny_tag(self):
+        return u'<img src="%s" />' % self.image_tiny.url
+
+    tiny_tag.short_description = 'Thumbnail'
+    tiny_tag.allow_tags = True
 
     def __unicode__(self):
         return self.title
