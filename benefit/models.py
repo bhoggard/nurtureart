@@ -9,7 +9,7 @@ class Artwork(models.Model):
     artist_last_name = models.CharField(max_length=255,db_index=True)
     website = models.URLField(blank=True)
     addresss = models.TextField(blank=True)
-    email = models.EmailField(max_length=255)
+    email = models.EmailField(max_length=255,blank=True)
     work_year = models.CharField(max_length=255)
     size = models.CharField(max_length=255)
     medium = models.TextField()
