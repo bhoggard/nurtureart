@@ -19,13 +19,17 @@
     <![endif]-->
     <style type="text/css">
         body { padding: 10px; }
+        p.caption { font-size: 90%; padding-top: 5px; padding-bottom: 10px; }
+        h4.header { margin-top: 0; margin-bottom: 5px; }
+        h4.title { margin-top: 0; }
     </style>
 </head>
 <body>
     <div class="container">
-        <p><img src="http://nurtureart.org/wp-content/themes/on-demand2.1.2/images/logo.png" alt="NURTUREart Logo" height="80"></p>
+        <img src="http://nurtureart.org/wp-content/themes/on-demand2.1.2/images/logo.png" alt="NURTUREart Logo" height="70">
         {% block content %}
-            <h4>Works from the 2014 NURTUREart Benefit</h4>
+            <h4 class="header">Works from the 2014 NURTUREart Benefit</h4>
+            <p><a href="{% url 'artworks-list' %}">View all artworks</a></p>
         {% endblock content %}
     </div>
 

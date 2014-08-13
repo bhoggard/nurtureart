@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+    {{ block.super }}
+
+    <div class="row">
+      <div class="col-md-9">
+        <img src="{{ artwork.image_large.url }}" alt="{{ artwork.title }}">
+      </div>
+      <div class="col-md-3">
+        <h4 class="title">{{ artwork.title }}, {{ artwork.work_year }}</h4>
+        <h5>{{ artwork.artist_first_name }} {{artwork.artist_last_name }}</h5>
+        <p>
+          {{ artwork.medium }}<br>
+          {{ artwork.size }}<br>
+          {% if artwork.edition %}
+            {{ artwork.edition }}<br>
+          {% endif %}
+          {% if artwork.website %}
+            <a href="{{ artwork.website }}" target="_blank">artist website</a><br>
+          {% endif %}
+        </p>
+      </div>
+    </div>
+{% endblock content %}
