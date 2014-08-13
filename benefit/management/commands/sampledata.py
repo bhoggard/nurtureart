@@ -1,6 +1,6 @@
 from random import choice, randint
 from django.core.management.base import BaseCommand, CommandError
-from benefit.models import Artwork
+from .models import Artwork
 import names
 
 class Command(BaseCommand):
