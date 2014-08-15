@@ -1,4 +1,4 @@
-from django.shortcuts import render_to_response
+from django.shortcuts import render, render_to_response
 from django.core.paginator import Paginator
 from .models import Artwork, Page
 from django.views.generic import DetailView, ListView
