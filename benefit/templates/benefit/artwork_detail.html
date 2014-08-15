@@ -2,7 +2,7 @@
 
 {% block content %}
     {{ block.super }}
-
+    <br>
     <div class="row">
       <div class="col-md-9">
         <img src="{{ artwork.image_large.url }}" alt="{{ artwork.title }}">
@@ -20,6 +20,14 @@
             <a href="{{ artwork.website }}" target="_blank">artist website</a><br>
           {% endif %}
         </p>
+        <ul class="pagination pagination-centered">
+          {% if prev %}
+            <li><a id="prev" href="{% url 'artwork-detail' prev %}">&lt;</a></li>
+          {% endif %}
+          {% if next %}
+            <li><a id="next" href="{% url 'artwork-detail' next %}">&gt;</a></li>
+          {% endif %}
+        </ul>
       </div>
     </div>
 {% endblock content %}
