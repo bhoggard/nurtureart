@@ -24,7 +24,7 @@
         <div class="col-md-2 col-xs-4">
         <a href="{% url 'artwork-detail' artwork.pk %}"><img src="{{ artwork.image_thumbnail.url }}"
           alt="{{ artwork.title }}"></a>
-        <p class="caption"><em>{{ artwork.title }}</em>, {{artwork.work_year }}<br>
+        <p class="caption"><em>{{ artwork.title|truncatechars:20 }}</em>, {{artwork.work_year }}<br>
         {{ artwork.artist_first_name }} {{artwork.artist_last_name }}</p>
         </div>
     {% endfor %}
