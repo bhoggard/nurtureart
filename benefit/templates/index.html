@@ -1,8 +1,35 @@
 {% extends "base.html" %}
+{% load staticfiles %}
 
 {% block content %}
     {{ block.super }}
     <div id="home">
     {{body}}
     </div>
+
+    <h2 id="sponsors">Thank you to our sponsors</h2>
+
+    <div class="row sponsors">
+        <div class="col-md-4">
+            <a href="http://www.artnews.com/" target="_blank"><img src="{% static 'benefit/ARTnews.jpg' %}" width="280"></a>
+        </div>
+        <div class="col-md-4">
+            <a href="http://cowgirlnyc.com/" target="_blank"><img src="{% static 'benefit/cowgirl.jpg' %}"></a>
+        </div>
+        <div class="col-md-4">
+            <a href="http://www.blouinartinfo.com/galleryguide" target="_blank"><img src="{% static 'benefit/GG.jpg' %}" width="280"></a>
+        </div>
+    </div>
+    <div class="row sponsors">
+        <div class="col-md-4">
+            <a href="https://www.uber.com/" target="_blank"><img src="{% static 'benefit/uber.png' %}" width="280"></a>
+        </div>
+        <div class="col-md-4">
+            <a href="http://www.wagmag.org/" target="_blank"><img src="{% static 'benefit/wagmag.jpg' %}" width="280"></a>
+        </div>
+        <div class="col-md-4">
+            <a href="http://www.artforum.com/" target="_blank"><img src="{% static 'benefit/Artforum.gif' %}" width="280"></a>
+        </div>
+    </div>
+
 {% endblock content %}
